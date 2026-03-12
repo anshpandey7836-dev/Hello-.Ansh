@@ -332,8 +332,11 @@ You can explore my projects to see my design style, coding approach, and the pro
 </footer>
 
 <script>
+
 const form = document.getElementById("ratingForm");
 const success = document.getElementById("success-msg");
+
+if(form){
 
 form.addEventListener("submit", async function(e){
 
@@ -352,7 +355,6 @@ headers:{
 if(response.ok){
 
 success.innerText="⭐ Thanks for rating my website!";
-
 form.reset();
 
 }
@@ -361,7 +363,7 @@ form.reset();
 
 });
 
-
+}
 const items = document.querySelectorAll(".footer-item");
 
 items.forEach(item => {
