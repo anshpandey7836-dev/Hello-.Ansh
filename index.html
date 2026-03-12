@@ -301,26 +301,7 @@ You can explore my projects to see my design style, coding approach, and the pro
 <span>Ghaziabaad(noida-62)</span>
 </a>
 
-</div>
-   <form action="https://formspree.io/f/xaqpjnve" method="POST" id="ratingForm">
 
-<input type="text" name="name" placeholder="Your Name" required>
-
-<input type="email" name="email" placeholder="Your Email" required>
-
-<div class="stars">
-<span data-rate="1">★</span>
-<span data-rate="2">★</span>
-<span data-rate="3">★</span>
-<span data-rate="4">★</span>
-<span data-rate="5">★</span>
-</div>
-
-<input type="hidden" name="rating" id="ratingValue">
-
-<button type="submit">Submit Rating</button>
-
-</form>
 
 <p id="success-msg"></p>
 <p class="footer-copy">
@@ -332,36 +313,6 @@ You can explore my projects to see my design style, coding approach, and the pro
 </footer>
 
 <script>
-
-const form = document.getElementById("ratingForm");
-const success = document.getElementById("success-msg");
-
-if(form){
-
-form.addEventListener("submit", async function(e){
-
-e.preventDefault();
-
-let data = new FormData(form);
-
-fetch(form.action,{
-method:"POST",
-body:data,
-headers:{
-'Accept':'application/json'
-}
-}).then(response => {
-
-if(response.ok){
-
-success.innerText="⭐ Thanks for rating my website!";
-form.reset();
-
-}
-
-});
-
-});
 
 }
 const items = document.querySelectorAll(".footer-item");
