@@ -999,3 +999,51 @@ border-top-right-radius: 50px;
 border-top-left-radius: 50px;
 
 } */
+.rating-box{
+text-align:center;
+margin-top:20px;
+}
+
+.rating-box input{
+display:block;
+margin:8px auto;
+padding:8px;
+width:200px;
+border-radius:6px;
+border:none;
+}
+
+.stars{
+font-size:28px;
+cursor:pointer;
+margin:10px 0;
+}
+
+.stars span{
+color:#777;
+transition:0.3s;
+}
+
+.stars span.active{
+color:#ff9800;
+}
+
+button{
+padding:8px 18px;
+border:none;
+border-radius:6px;
+background:linear-gradient(45deg,#ff7a18,#ff3cac,#784ba0);
+color:white;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+#rating-count{
+margin-top:10px;
+font-size:14px;
+opacity:0.8;
+}
