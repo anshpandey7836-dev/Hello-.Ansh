@@ -302,11 +302,7 @@ You can explore my projects to see my design style, coding approach, and the pro
 </a>
 
 </div>
-     <div class="rating-box">
-
-<h3>Rate My Website</h3>
-
-<form action="https://formspree.io/f/xaqpjnve" method="POST" id="ratingForm">
+   <form action="https://formspree.io/f/xaqpjnve" method="POST" id="ratingForm">
 
 <input type="text" name="name" placeholder="Your Name" required>
 
@@ -323,15 +319,10 @@ You can explore my projects to see my design style, coding approach, and the pro
 <input type="hidden" name="rating" id="ratingValue">
 
 <button type="submit">Submit Rating</button>
-    <input type="hidden" name="_next" value="https://anshpandey7836-dev.github.io/Hello-.Ansh/">
 
 </form>
 
-<p id="thanks"></p>
-<p id="rating-count"></p>
-
-</div>
-
+<p id="success-msg"></p>
 <p class="footer-copy">
 © 2026 Ansh Pandey|Fronted Web Developer
 </p>
@@ -341,35 +332,32 @@ You can explore my projects to see my design style, coding approach, and the pro
 </footer>
 
 <script>
-    const stars = document.querySelectorAll(".stars span");
-const ratingValue = document.getElementById("ratingValue");
-const ratingCount = document.getElementById("rating-count");
+const form = document.getElementById("ratingForm");
+const success = document.getElementById("success-msg");
 
-let count = localStorage.getItem("ratingCount") || 0;
-ratingCount.innerText = "Ratings given: " + count;
+form.addEventListener("submit", async function(e){
 
-stars.forEach(star => {
+e.preventDefault();
 
-star.addEventListener("click", function(){
+let data = new FormData(form);
 
-let rate = this.getAttribute("data-rate");
+fetch(form.action,{
+method:"POST",
+body:data,
+headers:{
+'Accept':'application/json'
+}
+}).then(response => {
 
-ratingValue.value = rate;
+if(response.ok){
 
-stars.forEach(s => s.classList.remove("active"));
+success.innerText="⭐ Thanks for rating my website!";
 
-for(let i=0;i<rate;i++){
-stars[i].classList.add("active");
+form.reset();
+
 }
 
 });
-
-});
-
-document.getElementById("ratingForm").addEventListener("submit",function(){
-
-count++;
-localStorage.setItem("ratingCount",count);
 
 });
 
