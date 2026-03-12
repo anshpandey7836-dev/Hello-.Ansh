@@ -302,16 +302,76 @@ You can explore my projects to see my design style, coding approach, and the pro
 </a>
 
 </div>
+     <div class="rating-box">
+
+<h3>Rate My Website</h3>
+
+<form action="https://formspree.io/f/xaqpjnve" method="POST" id="ratingForm">
+
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="email" name="email" placeholder="Your Email" required>
+
+<div class="stars">
+<span data-rate="1">★</span>
+<span data-rate="2">★</span>
+<span data-rate="3">★</span>
+<span data-rate="4">★</span>
+<span data-rate="5">★</span>
+</div>
+
+<input type="hidden" name="rating" id="ratingValue">
+
+<button type="submit">Submit Rating</button>
+
+</form>
+
+<p id="thanks"></p>
+<p id="rating-count"></p>
+
+</div>
 
 <p class="footer-copy">
 © 2026 Ansh Pandey|Fronted Web Developer
 </p>
 
 </div>
-
+   
 </footer>
 
 <script>
+    const stars = document.querySelectorAll(".stars span");
+const ratingValue = document.getElementById("ratingValue");
+const ratingCount = document.getElementById("rating-count");
+
+let count = localStorage.getItem("ratingCount") || 0;
+ratingCount.innerText = "Ratings given: " + count;
+
+stars.forEach(star => {
+
+star.addEventListener("click", function(){
+
+let rate = this.getAttribute("data-rate");
+
+ratingValue.value = rate;
+
+stars.forEach(s => s.classList.remove("active"));
+
+for(let i=0;i<rate;i++){
+stars[i].classList.add("active");
+}
+
+});
+
+});
+
+document.getElementById("ratingForm").addEventListener("submit",function(){
+
+count++;
+localStorage.setItem("ratingCount",count);
+
+});
+
 
 const items = document.querySelectorAll(".footer-item");
 
