@@ -1,0 +1,171 @@
+body{
+
+margin:0;
+font-family:Arial, sans-serif;
+background:#111;
+color:white;
+
+}
+
+
+/* NAVBAR */
+
+.navbar{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:20px 40px;
+
+background:black;
+
+position:fixed;
+width:100%;
+
+}
+
+.logo{
+
+color:red;
+
+}
+
+nav a{
+
+color:white;
+margin-left:20px;
+text-decoration:none;
+
+}
+
+nav a:hover{
+
+color:red;
+
+}
+
+
+/* HERO */
+
+.hero{
+
+height:80vh;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+text-align:center;
+
+background:url("https://picsum.photos/1200/700") center/cover;
+
+}
+
+.hero h1{
+
+font-size:50px;
+
+}
+
+.hero button{
+
+margin-top:20px;
+
+padding:12px 28px;
+
+background:red;
+
+border:none;
+
+border-radius:5px;
+
+color:white;
+
+font-size:18px;
+
+cursor:pointer;
+
+}
+
+.hero button:hover{
+
+background:#e50914;
+
+}
+
+
+/* MOVIE ROWS */
+
+.movies{
+
+padding:40px;
+
+margin-top:60px;
+
+}
+
+.row{
+
+display:flex;
+
+overflow-x:auto;
+
+gap:15px;
+
+padding:10px 0;
+
+}
+
+.row img{
+
+width:250px;
+
+border-radius:8px;
+
+transition:.3s;
+
+cursor:pointer;
+
+}
+
+.row img:hover{
+
+transform:scale(1.1);
+
+}
+
+
+/* FOOTER */
+
+footer{
+
+text-align:center;
+
+padding:20px;
+
+background:black;
+
+margin-top:40px;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:30px;
+
+}
+
+.row img{
+
+width:180px;
+
+}
+
+}
