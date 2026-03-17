@@ -501,6 +501,26 @@ You can explore my projects to see my design style, coding approach, and the pro
 </footer>
 
 <script>
+   const backToTopBtn = document.querySelector('.back-to-top-btn');
+
+// Show/Hide button based on scroll position
+window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+        // Show button when user scrolls down 300px
+        backToTopBtn.classList.add('show');
+    } else {
+        // Hide button when user is at top
+        backToTopBtn.classList.remove('show');
+    }
+});
+
+// Scroll to top when button is clicked
+backToTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'  // Smooth scrolling
+    });
+});
     /* ============================================
    SERVICES SECTION - JAVASCRIPT
    ============================================ */
