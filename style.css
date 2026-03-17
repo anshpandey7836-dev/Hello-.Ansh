@@ -1428,17 +1428,90 @@ body {
         height: 2px;
     }
 }
-.back-to-top-btn { ... } /* Button styling */
-.back-to-top-btn.show { display: flex; } /* Show/hide */
-.back-to-top-btn:hover { ... } /* Hover effects */
-@keyframes arrowUp { ... } /* Arrow
+/* ============================================
+   BACK TO TOP BUTTON - CSS
+   ============================================ */
+
+.back-to-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #64b5f6, #81c784);
+    color: #000;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 32px rgba(100, 181, 246, 0.1);
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Show button */
+.back-to-top-btn.show {
+    display: flex;
+    animation: slideUp 0.4s ease;
+}
+
+/* Hover effect */
+.back-to-top-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(100, 181, 246, 0.3);
+    background: linear-gradient(135deg, #81c784, #64b5f6);
+}
+
+/* Active effect */
+.back-to-top-btn:active {
+    transform: translateY(-2px);
+}
+
+/* Animation */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .back-to-top-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .back-to-top-btn {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
 /* ============================================
    TIMELINE SECTION - DARK THEME CSS
    ============================================ */
 
 .timeline-section {
     padding: 100px 40px;
-    background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
+    /* background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%); */
     position: relative;
     overflow: hidden;
 }
@@ -1452,7 +1525,7 @@ body {
     transform: translate(-50%, -50%);
     width: 800px;
     height: 800px;
-    background: radial-gradient(circle, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
+    /* background: radial-gradient(circle, rgba(102, 126, 234, 0.05) 0%, transparent 70%); */
     border-radius: 50%;
     pointer-events: none;
     animation: pulse-bg 8s ease-in-out infinite;
@@ -1475,7 +1548,7 @@ body {
     font-weight: 800;
     text-align: center;
     margin-bottom: 15px;
-    background: linear-gradient(135deg, #81c784 0%, #64b5f6 50%, #ffd54f 100%);
+    /* background: linear-gradient(135deg, #81c784 0%, #64b5f6 50%, #ffd54f 100%); */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1556,7 +1629,7 @@ body {
     transform: translateX(-50%);
     width: 24px;
     height: 24px;
-    background: linear-gradient(135deg, #64b5f6, #81c784);
+    /* background: linear-gradient(135deg, #64b5f6, #81c784); */
     border: 4px solid #0a0e27;
     border-radius: 50%;
     box-shadow: 0 0 0 8px rgba(102, 126, 234, 0.2);
@@ -1574,7 +1647,7 @@ body {
 
 /* Timeline content box */
 .timeline-content-box {
-    background: linear-gradient(135deg, rgba(30, 30, 46, 0.7) 0%, rgba(22, 33, 62, 0.7) 100%);
+    /* background: linear-gradient(135deg, rgba(30, 30, 46, 0.7) 0%, rgba(22, 33, 62, 0.7) 100%); */
     border: 1px solid rgba(102, 126, 234, 0.2);
     padding: 35px;
     border-radius: 12px;
@@ -1773,7 +1846,7 @@ body {
 
 .services-section {
     padding: 80px 40px;
-    background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
+    /* background: linear-gradient(135deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%); */
     position: relative;
     overflow: hidden;
 }
@@ -1786,7 +1859,7 @@ body {
     right: -50%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+    /* background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%); */
     border-radius: 50%;
     animation: float-bg 15s ease-in-out infinite;
     pointer-events: none;
@@ -1799,7 +1872,7 @@ body {
     left: -50%;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, transparent 70%);
+    /* background: radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, transparent 70%); */
     border-radius: 50%;
     animation: float-bg-reverse 20s ease-in-out infinite;
     pointer-events: none;
@@ -1827,7 +1900,7 @@ body {
     font-weight: 800;
     text-align: center;
     margin-bottom: 15px;
-    background: linear-gradient(135deg, #64b5f6 0%, #81c784 50%, #ffd54f 100%);
+    /* background: linear-gradient(135deg, #64b5f6 0%, #81c784 50%, #ffd54f 100%); */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1850,7 +1923,7 @@ body {
 }
 
 .service-card {
-    background: linear-gradient(135deg, rgba(30, 30, 46, 0.8) 0%, rgba(22, 33, 62, 0.8) 100%);
+    /* background: linear-gradient(135deg, rgba(30, 30, 46, 0.8) 0%, rgba(22, 33, 62, 0.8) 100%); */
     border: 1px solid rgba(102, 126, 234, 0.2);
     padding: 40px;
     border-radius: 16px;
@@ -1995,5 +2068,82 @@ body {
 
     .service-icon {
         font-size: 36px;
+    }
+}
+/* ============================================
+   BACK TO TOP BUTTON - CSS
+   ============================================ */
+
+.back-to-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #64b5f6, #81c784);
+    color: #000;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 32px rgba(100, 181, 246, 0.1);
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Show button */
+.back-to-top-btn.show {
+    display: flex;
+    animation: slideUp 0.4s ease;
+}
+
+/* Hover effect */
+.back-to-top-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(100, 181, 246, 0.3);
+    background: linear-gradient(135deg, #81c784, #64b5f6);
+}
+
+/* Active effect */
+.back-to-top-btn:active {
+    transform: translateY(-2px);
+}
+
+/* Animation */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .back-to-top-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .back-to-top-btn {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
     }
 }
