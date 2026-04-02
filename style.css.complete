@@ -1,0 +1,11 @@
+:root {
+  --primary: #ff7b00;
+  --secondary: #00e5ff;
+  --glass: rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.15);
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
