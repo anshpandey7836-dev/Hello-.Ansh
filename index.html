@@ -7,7 +7,152 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <link rel="stylesheet" href="style.css">
+<!-- ===== ANSH AI CHATBOT - Paste before </body> in index.html ===== -->
+<style>
+#cT{position:fixed;bottom:25px;right:90px;z-index:9998;width:54px;height:54px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(135deg,#ff7b00,#a84dff);box-shadow:0 4px 20px rgba(255,123,0,0.5);display:flex;align-items:center;justify-content:center;animation:cP 2.5s infinite;}
+#cT:hover{transform:scale(1.1);animation:none;}
+@keyframes cP{0%,100%{box-shadow:0 4px 20px rgba(255,123,0,0.5);}50%{box-shadow:0 4px 40px rgba(255,123,0,0.9),0 0 40px rgba(168,77,255,0.4);}}
+#cT svg{width:24px;height:24px;fill:white;}
+#cT .ci{display:block;}#cT .xi{display:none;}
+#cT.open .ci{display:none;}#cT.open .xi{display:block;}
+#cB{position:absolute;top:-3px;right:-3px;width:16px;height:16px;background:#ff3333;border-radius:50%;font-size:9px;font-weight:700;color:white;display:flex;align-items:center;justify-content:center;border:2px solid #000;font-family:Poppins,sans-serif;}
+#cW{position:fixed;bottom:90px;right:15px;width:320px;height:480px;z-index:9997;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;background:#0a0a0f;border:1px solid rgba(255,123,0,0.3);box-shadow:0 20px 60px rgba(0,0,0,0.9),0 0 30px rgba(255,123,0,0.1);transform:scale(0.85) translateY(20px);opacity:0;pointer-events:none;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);}
+#cW.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all;}
+.cH{padding:14px 16px;background:linear-gradient(135deg,rgba(255,123,0,0.15),rgba(168,77,255,0.1));border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.cAv{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#ff7b00,#a84dff);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;box-shadow:0 0 12px rgba(255,123,0,0.4);}
+.cHi{flex:1;}.cHi h4{font-size:13px;font-weight:700;color:#fff;font-family:Poppins,sans-serif;margin:0;}
+.cHi p{font-size:10px;color:#888;font-family:Poppins,sans-serif;margin:2px 0 0;}
+.od{width:6px;height:6px;background:#00e676;border-radius:50%;display:inline-block;margin-right:4px;animation:ob 1.5s infinite;}
+@keyframes ob{0%,100%{opacity:1}50%{opacity:0.3}}
+.clB{background:none;border:none;cursor:pointer;color:#666;font-size:15px;padding:4px;}.clB:hover{color:#ff4444;}
+#cM{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth;}
+#cM::-webkit-scrollbar{width:3px;}#cM::-webkit-scrollbar-thumb{background:rgba(255,123,0,0.3);border-radius:4px;}
+.m{display:flex;gap:7px;align-items:flex-end;animation:mI 0.3s ease;}
+@keyframes mI{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.m.u{flex-direction:row-reverse;}
+.ma{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#ff7b00,#a84dff);display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;}
+.m.u .ma{background:linear-gradient(135deg,#00e5ff,#0077ff);}
+.mb{max-width:80%;padding:9px 13px;border-radius:16px;font-size:12.5px;line-height:1.6;font-family:Poppins,sans-serif;word-break:break-word;}
+.m.b .mb{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.08);color:#ddd;border-bottom-left-radius:3px;}
+.m.u .mb{background:linear-gradient(135deg,#ff7b00,#ff4fd8);color:#fff;border-bottom-right-radius:3px;}
+.tD{display:flex;gap:4px;padding:10px 14px;background:rgba(255,255,255,0.07);border-radius:16px;border-bottom-left-radius:3px;width:fit-content;}
+.tD span{width:6px;height:6px;background:#ff7b00;border-radius:50%;animation:tA 1.2s infinite;}
+.tD span:nth-child(2){animation-delay:0.2s;}.tD span:nth-child(3){animation-delay:0.4s;}
+@keyframes tA{0%,60%,100%{transform:translateY(0);opacity:0.4}30%{transform:translateY(-5px);opacity:1}}
+.qr{display:flex;flex-wrap:wrap;gap:5px;padding:5px 0 0;}
+.qb{background:rgba(255,123,0,0.1);border:1px solid rgba(255,123,0,0.3);border-radius:14px;padding:4px 10px;font-size:10px;color:#ff7b00;cursor:pointer;font-family:Poppins,sans-serif;transition:all 0.2s;}
+.qb:hover{background:rgba(255,123,0,0.25);}
+.cIA{padding:10px 12px;border-top:1px solid rgba(255,255,255,0.07);display:flex;gap:8px;align-items:flex-end;flex-shrink:0;background:rgba(0,0,0,0.4);}
+#cI{flex:1;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:9px 14px;color:#fff;font-size:12px;font-family:Poppins,sans-serif;outline:none;resize:none;max-height:70px;min-height:36px;transition:border-color 0.3s;line-height:1.4;}
+#cI:focus{border-color:rgba(255,123,0,0.5);}#cI::placeholder{color:#555;}
+#sB{width:36px;height:36px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(135deg,#ff7b00,#ff4fd8);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.3s;box-shadow:0 3px 12px rgba(255,123,0,0.4);}
+#sB:hover{transform:scale(1.1);}#sB:disabled{opacity:0.5;cursor:not-allowed;}
+#sB svg{width:15px;height:15px;fill:white;}
+@media(max-width:480px){#cW{width:calc(100vw - 20px);left:10px;right:10px;bottom:90px;height:65vh;}#cT{right:85px;bottom:25px;}}
+</style>
 
+<button id="cT" onclick="tC()">
+  <div id="cB">1</div>
+  <svg class="ci" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+  <svg class="xi" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+</button>
+
+<div id="cW">
+  <div class="cH">
+    <div class="cAv">🤖</div>
+    <div class="cHi">
+      <h4>Ansh AI Assistant</h4>
+      <p><span class="od"></span>Online • Malik: Ansh Pandey</p>
+    </div>
+    <button class="clB" onclick="clC()">🗑️</button>
+  </div>
+  <div id="cM">
+    <div class="m b"><div class="ma">🤖</div><div>
+      <div class="mb">Namaste! 👋 Main Ansh ka AI Assistant hun!<br><br>Math, Science, History, Coding, GK — kuch bhi pucho, Hindi ya English mein! 😊</div>
+      <div class="qr">
+        <button class="qb" onclick="sQ('Ansh ke baare mein batao')">👨‍💻 About Ansh</button>
+        <button class="qb" onclick="sQ('Skills kya hain')">⚡ Skills</button>
+        <button class="qb" onclick="sQ('Contact kaise karu')">📞 Contact</button>
+        <button class="qb" onclick="sQ('15 ka square root kya hai')">🧮 Math</button>
+        <button class="qb" onclick="sQ('India ka itihas batao')">📚 History</button>
+      </div>
+    </div></div>
+  </div>
+  <div class="cIA">
+    <textarea id="cI" placeholder="Kuch bhi pucho..." rows="1" onkeydown="ck(event)" oninput="aR(this)"></textarea>
+    <button id="sB" onclick="snd()"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+  </div>
+</div>
+
+<script>
+// ⚠️ IMPORTANT: Render deploy karne ke baad apna URL yahan dalo
+var SERVER_URL = 'https://ansh-chatbot-server.onrender.com';
+
+var isOpen=false, msgs=[];
+
+function tC(){
+  isOpen=!isOpen;
+  document.getElementById('cW').classList.toggle('open',isOpen);
+  document.getElementById('cT').classList.toggle('open',isOpen);
+  if(isOpen){document.getElementById('cB').style.display='none';setTimeout(function(){document.getElementById('cI').focus();},300);}
+  sD();
+}
+
+function clC(){
+  msgs=[];
+  document.getElementById('cM').innerHTML='<div class="m b"><div class="ma">🤖</div><div><div class="mb">Clear! 🧹 Phir pucho kuch bhi 😊</div><div class="qr"><button class="qb" onclick="sQ(\'Ansh ke baare mein batao\')">👨‍💻 About</button><button class="qb" onclick="sQ(\'Skills kya hain\')">⚡ Skills</button><button class="qb" onclick="sQ(\'Contact kaise karu\')">📞 Contact</button></div></div></div>';
+}
+
+function ck(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();snd();}}
+function aR(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,70)+'px';}
+function sQ(t){document.getElementById('cI').value=t;snd();}
+function sD(){var b=document.getElementById('cM');setTimeout(function(){b.scrollTop=b.scrollHeight;},60);}
+
+function addM(role,text){
+  var b=document.getElementById('cM');
+  var d=document.createElement('div');
+  d.className='m '+(role==='user'?'u':'b');
+  var av=role==='user'?'👤':'🤖';
+  var html=text.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
+  d.innerHTML='<div class="ma">'+av+'</div><div class="mb">'+html+'</div>';
+  b.appendChild(d);sD();
+}
+
+function shT(){
+  var b=document.getElementById('cM');
+  var d=document.createElement('div');
+  d.className='m b';d.id='typ';
+  d.innerHTML='<div class="ma">🤖</div><div class="tD"><span></span><span></span><span></span></div>';
+  b.appendChild(d);sD();
+}
+
+async function snd(){
+  var inp=document.getElementById('cI');
+  var txt=inp.value.trim();
+  if(!txt)return;
+  inp.value='';inp.style.height='36px';
+  document.getElementById('sB').disabled=true;
+  addM('user',txt);
+  msgs.push({role:'user',content:txt});
+  shT();
+  try{
+    var res=await fetch(SERVER_URL+'/chat',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({messages:msgs})
+    });
+    var data=await res.json();
+    document.getElementById('typ').remove();
+    msgs.push({role:'assistant',content:data.reply});
+    addM('bot',data.reply);
+  }catch(e){
+    document.getElementById('typ').remove();
+    addM('bot','Server se connect nahi ho pa raha 😅\nThodi der baad try karo!\n\nYa direct contact karo:\n💬 +91 83830 41157');
+  }
+  document.getElementById('sB').disabled=false;
+  document.getElementById('cI').focus();
+}
+</script>
 </head>
 <body>
 <div id="loadingScreen">
