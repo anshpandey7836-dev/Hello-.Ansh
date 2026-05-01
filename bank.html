@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>SBI — Internet Banking</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+   
+</head>
+<link rel="stylesheet" href="bank.css">
+<body>
+<div class="app">
+
+  <!-- ╔══════════════════════╗
+       ║     LOGIN PAGE       ║
+       ╚══════════════════════╝ -->
+  <div class="page active" id="pgLogin">
+    <div class="sbi-topbar">
+      <div class="sbi-emblem">
+        <!-- SBI Logo SVG -->
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" fill="#1a3a7e" stroke="#c8993a" stroke-width="3"/>
+          <text x="50" y="45" text-anchor="middle" font-family="serif" font-size="18" font-weight="bold" fill="#fff">SBI</text>
+          <text x="50" y="62" text-anchor="middle" font-family="serif" font-size="8" fill="#c8993a" letter-spacing="1">STATE BANK</text>
+          <path d="M20 70 Q50 80 80 70" stroke="#c8993a" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <div class="sbi-brand">
+        <div class="sbi-brand-main">State Bank of India</div>
+        <div class="sbi-brand-sub">Internet Banking</div>
+      </div>
+      <div class="topbar-right">
+        <div class="secure-badge"><span class="secure-dot"></span>Secure</div>
+      </div>
+    </div>
+
+    <div class="login-hero-strip">
+      <div class="sbi-building">
+        <div class="sbi-building-overlay">
+          <span class="sbi-building-text">State Bank Bhavan, Mumbai</span>
+        </div>
+      </div>
+      <div class="hero-greeting">Welcome to</div>
+      <div class="hero-title">SBI <span>NetBanking</span></div>
+      <div class="hero-sub">Secure. Trusted. 91 years of banking excellence across India.</div>
+    </div>
+
+    <div class="login-form-wrap">
+      <div class="form-section-title">Personal Login</div>
+      <div class="form-section-sub">Enter your credentials to continue</div>
+
+      <div class="field">
+        <label>Username / CIF Number</label>
+        <div class="field-wrap">
+          <input type="text" id="inUser" placeholder="e.g. ANSH2025 or CIF number" autocomplete="off" spellcheck="false">
+          <span class="field-icon">👤</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Login Password</label>
+        <div class="field-wrap">
+          <input type="password" id="inPass" placeholder="Enter password">
+          <span class="field-icon" onclick="togglePwd('inPass',this)">👁</span>
+        </div>
+      </div>
+
+      <div class="captcha-row">
+        <div class="captcha-code" id="captchaCode">A7X2K</div>
+        <button class="captcha-refresh" onclick="refreshCaptcha()" title="Refresh">↻</button>
+      </div>
+      <input type="text" class="captcha-input" id="inCaptcha" placeholder="Enter captcha shown above" autocomplete="off" spellcheck="false">
+
+      <button class="btn-primary" id="btnLogin" onclick="doLogin()">
+        <span id="loginTxt">Continue to Banking</span>
+      </button>
+      <button class="btn-ghost" onclick="demoLogin()">⚡ Quick Demo</button>
+
+      <div class="links-row">
+        <span class="txt-link">Forgot Password?</span>
+        <span class="txt-link">New Registration</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ╔══════════════════════╗
+       ║  ACCOUNT SELECT      ║
+       ╚══════════════════════╝ -->
+  <div class="page" id="pgAccount">
+    <div class="page-header">
+      <button class="back-btn" onclick="goTo('pgLogin')">←</button>
+      <div>
+        <div class="ph-title">Select Account</div>
+        <div class="ph-sub">Step 2 of 2 — Choose account to proceed</div>
+      </div>
+    </div>
+
+    <div class="acc-body">
+      <div class="user-greeting-card">
+        <div class="ugc-label">Welcome back,</div>
+        <div class="ugc-name" id="ugcName">—</div>
+        <div class="ugc-cif" id="ugcCIF">CIF: SBI••••••4291</div>
+      </div>
+
+      <div class="section-label">Your Linked Accounts</div>
+      <div class="acc-list" id="accList">
+        <div class="acc-item selected" onclick="pickAcc(this,'SB •••• 4291','Savings Account')">
+          <div class="acc-icon sb">🏦</div>
+          <div class="acc-info">
+            <div class="acc-type">Savings Account</div>
+            <div class="acc-num">SB •••• •••• 4291 &nbsp;·&nbsp; Main Operative</div>
+          </div>
+          <div class="radio-circle"></div>
+        </div>
+        <div class="acc-item" onclick="pickAcc(this,'CA •••• 8812','Current Account')">
+          <div class="acc-icon ca">💼</div>
+          <div class="acc-info">
+            <div class="acc-type">Current Account</div>
+            <div class="acc-num">CA •••• •••• 8812</div>
+          </div>
+          <div class="radio-circle"></div>
+        </div>
+        <div class="acc-item" onclick="pickAcc(this,'FD •••• 3377','Fixed Deposit')">
+          <div class="acc-icon fd">📊</div>
+          <div class="acc-info">
+            <div class="acc-type">Fixed Deposit</div>
+            <div class="acc-num">FD •••• •••• 3377 &nbsp;·&nbsp; 7.4% p.a.</div>
+          </div>
+          <div class="radio-circle"></div>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="proceedDash()">Proceed to Dashboard →</button>
+    </div>
+  </div>
+
+  <!-- ╔══════════════════════╗
+       ║     DASHBOARD        ║
+       ╚══════════════════════╝ -->
+  <div class="page" id="pgDash">
+    <!-- Top bar -->
+    <div class="sbi-topbar">
+      <div class="sbi-emblem">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" fill="#1a3a7e" stroke="#c8993a" stroke-width="3"/>
+          <text x="50" y="45" text-anchor="middle" font-family="serif" font-size="18" font-weight="bold" fill="#fff">SBI</text>
+          <text x="50" y="62" text-anchor="middle" font-family="serif" font-size="8" fill="#c8993a" letter-spacing="1">STATE BANK</text>
+          <path d="M20 70 Q50 80 80 70" stroke="#c8993a" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <div class="sbi-brand">
+        <div class="sbi-brand-main">SBI NetBanking</div>
+        <div class="sbi-brand-sub" id="dashAccLabel">Savings Account</div>
+      </div>
+      <div class="topbar-right">
+        <div class="secure-badge"><span class="secure-dot"></span>Live</div>
+      </div>
+    </div>
+
+    <div class="dash-scroll">
+      <!-- Balance Card -->
+      <div class="balance-card">
+        <div class="card-building-bg"></div>
+        <div class="bc-top">
+          <div class="bc-acc-info">
+            <div class="bc-acc-type">Available Balance</div>
+            <div class="bc-acc-num" id="dashAccNum">SB •••• 4291</div>
+          </div>
+          <div class="bc-chip">Savings A/C</div>
+        </div>
+        <div class="bc-balance-label">Current Balance</div>
+        <div class="bc-amount" id="bcAmt">₹10,00,000</div>
+        <div class="bc-currency">INDIAN RUPEES — INR</div>
+        <div class="bc-meta-row">
+          <div class="bc-meta-item">
+            <div class="bc-meta-key">Account Holder</div>
+            <div class="bc-meta-val" id="bcHolder">—</div>
+          </div>
+          <div class="bc-meta-item">
+            <div class="bc-meta-key">IFSC</div>
+            <div class="bc-meta-val">SBIN0001234</div>
+          </div>
+          <div class="bc-meta-item">
+            <div class="bc-meta-key">Branch</div>
+            <div class="bc-meta-val">New Delhi Main</div>
+          </div>
+          <div class="bc-meta-item">
+            <div class="bc-meta-key">Last Login</div>
+            <div class="bc-meta-val" id="bcLastLogin">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="section-pad" style="padding-top:20px;">
+        <div class="section-label" style="margin-bottom:12px;">Quick Actions</div>
+        <div class="quick-actions">
+          <div class="qa-item qa-dep" onclick="openSheet('deposit')">
+            <div class="qa-icon">💰</div>
+            <div class="qa-label">Deposit</div>
+          </div>
+          <div class="qa-item qa-wit" onclick="openSheet('withdraw')">
+            <div class="qa-icon">🏧</div>
+            <div class="qa-label">Withdraw</div>
+          </div>
+          <div class="qa-item qa-tra" onclick="showToast('info','Coming Soon','Fund Transfer will be available in next update.')">
+            <div class="qa-icon">↔️</div>
+            <div class="qa-label">Transfer</div>
+          </div>
+          <div class="qa-item qa-sta" onclick="showToast('info','Statement','Generating your mini statement...')">
+            <div class="qa-icon">📄</div>
+            <div class="qa-label">Statement</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="section-pad" style="padding-top:16px;">
+        <div class="stat-pills">
+          <div class="stat-pill">
+            <div class="sp-icon" style="background:var(--success-bg);">📈</div>
+            <div class="sp-info">
+              <div class="sp-val" id="statDep">₹0</div>
+              <div class="sp-label">Deposited</div>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <div class="sp-icon" style="background:var(--info-bg);">📉</div>
+            <div class="sp-info">
+              <div class="sp-val" id="statWit">₹0</div>
+              <div class="sp-label">Withdrawn</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transactions -->
+      <div class="section-pad" style="padding-top:20px; padding-bottom:0;">
+        <div class="sec-head">
+          <h3>Transaction History</h3>
+          <span id="txnCount">1 record</span>
+        </div>
+        <div class="txn-list" id="txnList">
+          <div class="txn-item">
+            <div class="txn-dot-wrap dot-credit"><span class="txn-dot-icon">↓</span></div>
+            <div class="txn-mid">
+              <div class="txn-desc">Account Opening Balance</div>
+              <div class="txn-ref">Ref: SBI0000000001</div>
+            </div>
+            <div class="txn-right">
+              <div class="txn-amt cr">+₹10,00,000</div>
+              <div class="txn-time">Today</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logout -->
+      <div class="section-pad" style="padding-top:24px; padding-bottom:0;">
+        <button class="btn-ghost" style="color:var(--danger);border-color:rgba(192,57,43,0.25);" onclick="doLogout()">⏻ &nbsp;Logout Securely</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /app -->
+
+<!-- ╔══════════════════════╗
+     ║   DEPOSIT SHEET      ║
+     ╚══════════════════════╝ -->
+<div class="modal-bg" id="sheetDeposit">
+  <div class="modal-sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-header">
+      <div class="sheet-icon si-dep">💰</div>
+      <div>
+        <div class="sheet-title">Deposit Funds</div>
+        <div class="sheet-sub">Credit amount to your account</div>
+      </div>
+      <button class="sheet-close" onclick="closeSheet('sheetDeposit')">✕</button>
+    </div>
+    <div class="sheet-body">
+      <div class="balance-pill-sheet">
+        <span class="bps-label">Current Balance</span>
+        <span class="bps-val" id="depBalPill">₹10,00,000</span>
+      </div>
+      <div class="amount-field-label">Enter Amount</div>
+      <div class="amount-field-wrap">
+        <input type="number" class="amount-input" id="depInput" placeholder="0" min="1">
+      </div>
+      <div class="amount-hint">Min: ₹1 &nbsp;|&nbsp; Max per transaction: ₹10,00,000</div>
+      <div class="quick-amounts">
+        <span class="qa-pill" onclick="setAmt('depInput',500)">₹500</span>
+        <span class="qa-pill" onclick="setAmt('depInput',1000)">₹1,000</span>
+        <span class="qa-pill" onclick="setAmt('depInput',5000)">₹5,000</span>
+        <span class="qa-pill" onclick="setAmt('depInput',10000)">₹10,000</span>
+        <span class="qa-pill" onclick="setAmt('depInput',50000)">₹50,000</span>
+      </div>
+      <div class="sheet-actions">
+        <button class="btn-cancel" onclick="closeSheet('sheetDeposit')">Cancel</button>
+        <button class="btn-confirm btn-confirm-dep" onclick="confirmDeposit()">Confirm Deposit ✓</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ╔══════════════════════╗
+     ║  WITHDRAW SHEET      ║
+     ╚══════════════════════╝ -->
+<div class="modal-bg" id="sheetWithdraw">
+  <div class="modal-sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-header">
+      <div class="sheet-icon si-wit">🏧</div>
+      <div>
+        <div class="sheet-title">Withdraw Funds</div>
+        <div class="sheet-sub">Debit amount from your account</div>
+      </div>
+      <button class="sheet-close" onclick="closeSheet('sheetWithdraw')">✕</button>
+    </div>
+    <div class="sheet-body">
+      <div class="balance-pill-sheet">
+        <span class="bps-label">Available Balance</span>
+        <span class="bps-val" id="witBalPill">₹10,00,000</span>
+      </div>
+      <div class="amount-field-label">Enter Amount</div>
+      <div class="amount-field-wrap">
+        <input type="number" class="amount-input" id="witInput" placeholder="0" min="1">
+      </div>
+      <div class="amount-hint">Cannot exceed your available balance</div>
+      <div class="quick-amounts">
+        <span class="qa-pill" onclick="setAmt('witInput',500)">₹500</span>
+        <span class="qa-pill" onclick="setAmt('witInput',1000)">₹1,000</span>
+        <span class="qa-pill" onclick="setAmt('witInput',5000)">₹5,000</span>
+        <span class="qa-pill" onclick="setAmt('witInput',10000)">₹10,000</span>
+        <span class="qa-pill" onclick="setAmt('witInput',50000)">₹50,000</span>
+      </div>
+      <div class="sheet-actions">
+        <button class="btn-cancel" onclick="closeSheet('sheetWithdraw')">Cancel</button>
+        <button class="btn-confirm btn-confirm-wit" onclick="confirmWithdraw()">Confirm Withdrawal ✓</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast container -->
+<div class="toast-stack" id="toastStack"></div>
+
+<script src="bank.js"></script>
+</body>
+</html>
