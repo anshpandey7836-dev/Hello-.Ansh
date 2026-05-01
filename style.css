@@ -608,7 +608,7 @@ project-iframe-wrap {
 /* iframe — 2x size, scale 0.5 se fit hoga card mein */
 .project-iframe-wrap iframe {
   width: 200%;
-  height: 200%;
+  height: 220%;
   transform: scale(0.5);
   transform-origin: top left;
   border: none;
@@ -674,7 +674,7 @@ project-iframe-wrap {
 .project-iframe-wrap {
   position: relative;
   width: 100%;
-  height: 240px;
+  height: 230px;
   overflow: hidden;
   background: #0d0d0d;
   border-radius: 12px 12px 0 0;
