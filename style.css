@@ -76,7 +76,7 @@
     .project-card:hover img{transform:scale(1.1);}
     .project-card::before{content:'';position:absolute;inset:0;border-radius:20px;padding:2px;background:linear-gradient(45deg,#ff4fd8,#a84dff,#ff7a18);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:0.4s;pointer-events:none;}
     .project-card:hover::before{opacity:1;}
-    .cosmic-btn{display:inline-block;padding:7px 24px;font-size:14px;font-weight:600;color:#fff;text-decoration:none;border-radius:25px;background:linear-gradient(135deg,#df1907,#8a92a3,#100802);box-shadow:0 5px 20px rgba(248,75,7,0.5);transition:all 0.3s;}
+    .cosmic-btn{display:inline-block;padding:7px 24px;font-size:14px;font-weight:600;color:#fff;text-decoration:none;border-radius:25px;background:linear-gradient(135deg,#df1907,#5f729c,#100802);box-shadow:0 5px 20px rgba(248,75,7,0.5);transition:all 0.3s;}
     .cosmic-btn:hover{transform:translateY(-2px) scale(1.04);}
     .skills-wrapper{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:25px;}
     .skill-card{background:rgba(255,255,255,0.05);padding:30px 20px;border-radius:20px;text-align:center;border:1px solid rgba(255,255,255,0.1);transition:0.4s;}
