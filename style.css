@@ -2,6 +2,9 @@
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
     html{scroll-behavior:smooth;}
     body{background:#000;color:#fff;overflow-x:hidden;overflow-y:auto;}
+*:focus {
+  outline: none;
+}
     #loadingScreen{position:fixed;inset:0;background:#000;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:99999;transition:opacity 0.4s,visibility 0.4s;}
     #loadingScreen.hide{opacity:0;visibility:hidden;pointer-events:none;}
     .ld-ring{width:90px;height:90px;border-radius:50%;border:4px solid rgba(255,255,255,0.08);border-top-color:#ff7b00;border-right-color:#00e5ff;animation:ldSpin 0.8s linear infinite;margin-bottom:18px;}
