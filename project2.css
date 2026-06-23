@@ -1,0 +1,34 @@
+#eg{
+    background-color: rgb(171, 153, 175);
+    border: 5px solid blue;
+    height: auto;
+    margin:auto;
+    padding: 20px;
+}
+.profile img{
+       height: 200px;
+       width: 200px;
+       border-radius: 45%;
+       border: 1px solid black;
+}
+/* #h1{
+    text-align: center;
+    font-size: 45px;
+    color: #1f2a44 ; */
+/* } */
+
+.tittle{
+    align-items: right;
+     font-size: 45px;
+    color: #1f2a44;
+
+}
+.years{
+    align-items: center;
+    font-size:40px ;
+     color: #1f2a44 ;
+     font-weight:bold ;
+}
+h4{
+    text-align: center;
+}

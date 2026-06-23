@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chanting Counter</title>
+    <link rel="stylesheet" href="chnating.css">
+</head>
+<body class="krishna">
+    <canvas id="bgCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+    <header class="head">
+        <h1>📿 Chanting Counter</h1>
+        <button class="mode-toggle" onclick="toggleMode()">🌙</button>
+    </header>
+    
+    <div class="container">
+        <div class="current-section">
+            <h2 id="name">Current Round 🔅</h2>
+            <div class="current">
+                <h3 id="curVal">0</h3>
+            </div>
+            <div class="current-controls">
+                <button class="add" onclick="plus()">➕</button>
+                <button class="subs" onclick="minus()">➖</button>
+                <button class="firse" onclick="reset()">Reset</button>
+            </div>
+        </div>
+        
+        <div class="total-section">
+            <h2 id="name">Total Rounds</h2>
+            <div class="total">
+                <h3 id="totalVal">0</h3>
+            </div>
+            <div class="total-controls">
+                <button class="plus" onclick="totalplus()">➕</button>
+                <button class="mins" onclick="totalminus()">➖</button>
+                <button class="reset" onclick="totalreset()">🔄</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        🪷 राधे कृष्णा | Made by Ansh Pandey |© Frontend Developer
+    </footer>
+    
+    <script src="chnating.js"></script>
+</body>
+</html>
+

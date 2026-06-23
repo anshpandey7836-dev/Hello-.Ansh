@@ -1,0 +1,75 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.8em;
+  color: #666;
+  text-align: center;
+
+}
+
+/* Parallax Images */
+.pimg1, .pimg2, .pimg3 {
+  position: relative;
+  opacity: 1;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.pimg1 {
+  background-image: url('forest.jpg');
+  min-height: 100%;
+}
+
+.pimg2 {
+  background-image: url('picture.jpg');
+  min-height: 400px;
+}
+
+.pimg3 {
+  background-image: url('hareKrishna.jpeg');
+  min-height: 400px;
+}
+
+/* Text on image */
+.ptext {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  /* text-align: center; */
+  color: #fff;
+  font-size: 27px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+
+.ptext .border {
+  background-color: #111;
+  color: #fff;
+  padding: 20px;
+}
+
+/* Sections */
+.section {
+  padding: 50px 80px;
+  /* text-align: center; */
+}
+
+.section-light {
+  background-color: #f4f4f4;
+  color: #666;
+}
+
+.section-dark {
+  background-color: #282e34;
+  color: #ddd;
+}
+
+/* Mobile Fix
+@media(max-width:568px) 
+  .pimg1, .pimg2, .pimg3 {
+    background-attachment: scroll;
+  }
+} */

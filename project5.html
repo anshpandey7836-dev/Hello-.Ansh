@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Ansh Pandey Portfolio</title>
+
+<link rel="stylesheet" href="project5.css">
+
+</head>
+
+<body>
+
+
+<nav class="navbar">
+
+<h2 class="logo">ANSH</h2>
+
+<ul>
+
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+
+
+<section id="home" class="hero">
+
+<div class="hero-box">
+
+<h1>Hello I'm <span>Ansh</span></h1>
+
+<h3 id="typing"></h3>
+
+<p>I design aesthetic and modern websites.</p>
+
+<a href="#skills" class="btn">My Skills</a>
+
+</div>
+
+
+<img src="WhatsApp Image 2026-03-09 at 7.57.00 PM.jpeg" class="profile">
+
+</section>
+
+
+
+<section id="about" class="glass">
+
+<h2 class="title">About Me</h2>
+
+<p>
+
+My name is Ansh Pandey.  
+I am currently in class 12 and learning web development.
+
+I know HTML, CSS and JavaScript and I am learning React.
+
+My goal is to become a full stack developer.
+
+</p>
+
+</section>
+
+
+
+<section id="skills">
+
+<h2 class="title">Skills</h2>
+
+<div class="skills">
+
+
+<div class="skill-card">
+
+<img src="images/html.png">
+
+<h3>HTML</h3>
+
+<p>85%</p>
+
+</div>
+
+
+<div class="skill-card">
+
+<img src="images/css.png">
+
+<h3>CSS</h3>
+
+<p>80%</p>
+
+</div>
+
+
+<div class="skill-card">
+
+<img src="images/js.png">
+
+<h3>JavaScript</h3>
+
+<p>80%</p>
+
+</div>
+
+
+<div class="skill-card">
+
+<img src="images/react.png">
+
+<h3>React</h3>
+
+<p>40%</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<section id="contact" class="glass">
+
+<h2 class="title">Contact</h2>
+
+<p>📞 8383041157</p>
+
+<p>📧 anshpandey7836@gmail.com</p>
+
+<p>📍 Ghaziabad</p>
+
+</section>
+
+
+
+<script>
+
+let text="Frontend Developer...!";
+let i=0;
+
+function typing(){
+
+if(i<text.length){
+
+document.getElementById("typing").innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(typing,100);
+
+}
+
+}
+
+typing();
+
+
+
+let cards=document.querySelectorAll(".skill-card");
+
+cards.forEach(card=>{
+
+card.addEventListener("mousemove",(e)=>{
+
+let x=e.offsetX;
+let y=e.offsetY;
+
+let rotateX=(y/10);
+let rotateY=(x/10);
+
+card.style.transform="rotateX("+rotateX+"deg) rotateY("+rotateY+"deg)";
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform="rotateX(0) rotateY(0)";
+
+});
+
+});
+
+</script>
+
+
+</body>
+</html>
