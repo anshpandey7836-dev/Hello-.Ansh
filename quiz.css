@@ -1,0 +1,377 @@
+/* ============================================================
+   Quiz Master - Stylesheet
+   You can focus on script.js for learning JavaScript;
+   this file only controls how the page looks.
+   ============================================================ */
+
+:root {
+  --bg: #fbf7ef;
+  --card: #ffffff;
+  --ink: #2b2b2b;
+  --muted: #7c7569;
+  --accent: #d97706;       /* amber */
+  --accent-dark: #b45309;
+  --correct: #16a34a;
+  --wrong: #dc2626;
+  --line: #ece5d8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+.app {
+  width: 100%;
+  max-width: 560px;
+}
+
+h1 {
+  font-size: 1.9rem;
+  margin: 0 0 4px;
+  letter-spacing: -0.5px;
+}
+
+.subtitle { color: var(--muted); margin: 0 0 20px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 560px;
+  overflow: hidden;  /* ye add karo */
+     
+}
+
+
+/* The screens - only one is visible at a time. JS toggles .hidden */
+.hidden { display: none; }
+
+/* Top status bar during the quiz */
+.status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.timer { font-variant-numeric: tabular-nums; font-weight: 600; }
+.timer.low { color: var(--wrong); }
+
+/* Progress bar */
+.progress-track {
+  height: 8px;
+  background: var(--line);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.category-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--accent-dark);
+  background: #fdecd3;
+  padding: 3px 10px;
+  border-radius: 99px;
+  margin-bottom: 12px;
+}
+
+.question-text {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin: 0 0 20px;
+}
+
+/* Answer option buttons */
+.options { display: grid; gap: 10px; }
+
+.option {
+  text-align: left;
+  padding: 10px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  font-size: 1rem;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.option:hover:not(:disabled) { border-color: var(--accent); }
+.option:focus-visible { outline: 3px solid #fcd9a4; outline-offset: 2px; }
+.option:disabled { cursor: default; }
+
+.option .key {
+  width: 24px; height: 24px;
+  flex: none;
+  display: grid; place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* States applied by JS after answering */
+.option.correct { border-color: var(--correct); background: #eafbf0; }
+.option.wrong   { border-color: var(--wrong);   background: #fdecec;  color: var(--muted); }
+.option.correct .key { border-color: var(--correct); color: var(--correct); }
+.option.wrong .key   { border-color: var(--wrong);   color: var(--wrong); }
+
+.correct-text {
+  color: green;
+}
+
+.wrong-text {
+  color: red;
+}
+/* .feedback {
+  margin-top: 16px;
+  font-size: 0.95rem;
+  min-height: 22px;
+  color: red;
+} */
+.feedback.good { color: var(--correct); }
+.feedback.bad  { color: var(--wrong); }
+
+.btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn:hover { background: var(--accent-dark); }
+.btn:focus-visible { outline: 3px solid #fcd9a4; outline-offset: 2px; }
+.btn.secondary { background: #e6c176; color: var(--ink); }
+.btn.secondary:hover { background: #f17b06; }
+
+/* Results screen */
+.score-big {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 6px 0 0;
+}
+.score-sub { text-align: center; color: var(--muted); margin: 0 0 6px; }
+.verdict { text-align: center; font-size: 1.1rem; margin: 4px 0 20px; }
+
+.breakdown-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+  margin: 18px 0 8px;
+}
+.cat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+.cat-row:last-child { border-bottom: none; }
+.cat-score { font-weight: 600; }
+
+.start-meta { color: var(--muted); margin: 0 0 8px; font-size: 0.95rem; }
+ul.rules { color: var(--muted); font-size: 0.92rem; padding-left: 18px; }
+ul.rules li { margin-bottom: 4px; }
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #a7a3a3;
+  border-bottom-right-radius:10px ;
+    border-bottom-left-radius:10px ;
+}
+
+
+.footer {
+  background: rgba(171, 168, 157, 0.961);
+  /* backdrop-filter: blur(10px); */
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  padding: 10px;
+  color: rgba(15, 15, 15, 0.961);
+  font-weight: bold;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+/* .question-count-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.count-btn {
+  padding: 10px 20px;
+  border: 2px solid #d7ae62;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #6b6a6a;
+  transition: all 0.2s;
+} */
+.question-count-buttons {
+  display: flex;
+  gap: 6px;           /* gap kam karo */
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;    /* ye hona chahiye */
+  width: 100%;        /* ye add karo */
+}
+
+.count-btn {
+  padding: 8px 10px;  /* padding aur kam karo */
+  border: 2px solid #d7ae62;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;    /* font thoda aur kam */
+  color: #6b6a6a;
+  transition: all 0.2s;
+  flex: 1;
+  min-width: 55px;
+  max-width: 100px;
+  text-align: center;
+}
+.count-btn:hover {
+  background: #c9a666;
+  color: rgb(176, 175, 175);
+}
+
+.count-btn.selected {
+  background: #d7a241;
+  color: white;
+  font-weight: bold;
+}
+/* ============================================================
+   RESPONSIVE — Mobile & Tablet
+   ============================================================ */
+
+/* Tablet (max 768px) */
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .question-text {
+    font-size: 1.1rem;
+  }
+
+  .score-big {
+    font-size: 2.5rem;
+  }
+}
+
+/* Mobile (max 480px) */
+@media (max-width: 480px) {
+  body {
+    padding: 16px 12px 70px 12px; /* bottom mein footer ka space */
+  }
+
+  .card {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .question-text {
+    font-size: 1rem;
+  }
+
+  .option {
+    padding: 12px 14px;
+    font-size: 0.92rem;
+  }
+
+  .btn {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .score-big {
+    font-size: 2rem;
+  }
+
+  /* Count buttons — wrap karo agar space kam ho */
+  .question-count-buttons {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .count-btn {
+    padding: 8px 14px;
+    font-size: 14px;
+    flex: 1;           /* sabhi buttons equal width lenge */
+    min-width: 70px;   /* ek button bahut chota na ho jaaye */
+    text-align: center;
+  }
+}
+
+/* Bahut chhoti screen (max 360px) */
+@media (max-width: 360px) {
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .question-text {
+    font-size: 0.95rem;
+  }
+
+  .option {
+    font-size: 0.88rem;
+    padding: 10px 12px;
+  }
+
+  .score-big {
+    font-size: 1.8rem;
+  }
+}
