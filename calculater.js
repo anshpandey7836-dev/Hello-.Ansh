@@ -3,107 +3,153 @@ let expression = "";
 let justCalculated = false;
 
 function updateDisplay() {
-  display.value = expression
-    .replace(/\*\*/g, "^")
-    .replace(/\*/g, "×")
-    .replace(/\//g, "÷") || "0";
+    let showExpression = expression
+        .replace(/\*\*/g, "^")
+        .replace(/\*/g, "×")
+        .replace(/\//g, "÷");
+
+    display.value = showExpression || "0";
 }
 
 function addNumber(num) {
-  if (justCalculated) {
-    expression = "";
-    justCalculated = false;
-  }
+    if (justCalculated) {
+        expression = "";
+        justCalculated = false;
+    }
 
-  expression += num;
-  updateDisplay();
+    expression += num;
+    updateDisplay();
 }
 
 function addOperator(op) {
-  justCalculated = false;
+    justCalculated = false;
 
-  let actualOp = op;
+    let actualOp = op;
 
-  if (op === "×") actualOp = "*";
-  if (op === "÷") actualOp = "/";
-  if (op === "^") actualOp = "**";
+    switch (op) {
+        case "×":
+            actualOp = "*";
+            break;
+        case "÷":
+            actualOp = "/";
+            break;
+        case "^":
+            actualOp = "**";
+            break;
+        case "%":
+            actualOp = "%";
+            break;
+    }
 
-  if (expression === "" && actualOp !== "-") return;
+    if (
+        expression === "" &&
+        actualOp !== "-" &&
+        actualOp !== "("
+    ) {
+        return;
+    }
 
-  let lastChar = expression.slice(-1);
+    let last = expression.slice(-1);
 
-  if (["+", "-", "*", "/", "%"].includes(lastChar)) {
-    expression = expression.slice(0, -1);
-  }
+    if (["+", "-", "*", "/", "%"].includes(last)) {
+        expression = expression.slice(0, -1);
+    }
 
-  if (expression.slice(-2) === "**") {
-    expression = expression.slice(0, -2);
-  }
-
-  expression += actualOp;
-  updateDisplay();
+    expression += actualOp;
+    updateDisplay();
 }
 
-function allclear() {
-  expression = "";
-  justCalculated = false;
-  display.value = "0";
+function addBracket(bracket) {
+    if (justCalculated) {
+        expression = "";
+        justCalculated = false;
+    }
+
+    expression += bracket;
+    updateDisplay();
+}
+
+function addDecimal() {
+    let parts = expression.split(/[\+\-\*\/\(\)]/);
+    let currentNumber = parts[parts.length - 1];
+
+    if (!currentNumber.includes(".")) {
+        expression += ".";
+        updateDisplay();
+    }
 }
 
 function clearOne() {
-  if (!expression) return;
+    if (!expression) return;
 
-  if (expression.slice(-2) === "**") {
-    expression = expression.slice(0, -2);
-  } else {
-    expression = expression.slice(0, -1);
-  }
+    if (expression.endsWith("**")) {
+        expression = expression.slice(0, -2);
+    } else {
+        expression = expression.slice(0, -1);
+    }
 
-  updateDisplay();
+    updateDisplay();
+}
+
+function allclear() {
+    expression = "";
+    justCalculated = false;
+    display.value = "0";
 }
 
 function sign() {
-  if (!expression) return;
+    let match = expression.match(/(-?\d+\.?\d*)$/);
 
-  let match = expression.match(/(-?\d+\.?\d*)$/);
+    if (!match) return;
 
-  if (match) {
     let num = match[1];
 
-    let toggled = num.startsWith("-")
-      ? num.slice(1)
-      : "-" + num;
+    let newNum = num.startsWith("-")
+        ? num.slice(1)
+        : "-" + num;
 
     expression =
-      expression.slice(0, expression.length - num.length) +
-      toggled;
+        expression.slice(0, expression.length - num.length) +
+        newNum;
 
     updateDisplay();
-  }
 }
 
 function calculate() {
-  if (!expression) return;
+    if (!expression) return;
 
-  try {
-    let result = Function(
-      '"use strict"; return (' + expression + ')'
-    )();
+    try {
 
-    if (!isFinite(result)) {
-      display.value = "Math Error";
-      expression = "";
-      return;
+        let open = (expression.match(/\(/g) || []).length;
+        let close = (expression.match(/\)/g) || []).length;
+
+        if (open !== close) {
+            display.value = "Bracket Error";
+            return;
+        }
+
+        let result = Function(
+            `"use strict"; return (${expression})`
+        )();
+
+        if (
+            result === Infinity ||
+            result === -Infinity ||
+            isNaN(result)
+        ) {
+            display.value = "Math Error";
+            expression = "";
+            return;
+        }
+
+        result = parseFloat(result.toPrecision(12));
+
+        display.value = result;
+        expression = result.toString();
+        justCalculated = true;
+
+    } catch (e) {
+        display.value = "Invalid Expression";
+        expression = "";
     }
-
-    result = parseFloat(Number(result).toPrecision(12));
-
-    display.value = result;
-    expression = result.toString();
-
-    justCalculated = true;
-  } catch (error) {
-    display.value = "Invalid Expression";
-    expression = "";
-  }
 }
