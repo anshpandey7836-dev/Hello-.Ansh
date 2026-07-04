@@ -2,11 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent; /* Tap blue flash band */
 }
 
 body {
-  height: 120vh;
+  height: 100vh;
   height: 100dvh;
   display: flex;
   align-items: center;
@@ -14,14 +13,15 @@ body {
   background: #1a1f2e;
   font-family: 'Segoe UI', sans-serif;
   overflow: hidden;
+  position: relative;
+  bottom: 12px;
 }
 
 .container {
   background: #252c3d;
   border-radius: 24px;
   padding: 20px;
-  width: 96vw;        /* Mobile pe wide */
-  max-width: 420px;   /* Desktop pe limit */
+  width: min(320px, 95vw);
   box-shadow: 0 20px 60px rgba(23, 34, 67, 0.5);
 }
 
@@ -31,11 +31,11 @@ body {
 
 .display {
   width: 100%;
-  height: 56px;
+  height: 50px;
   border: none;
   border-radius: 8px;
   text-align: right;
-  font-size: clamp(18px, 5vw, 24px);
+  font-size: clamp(16px, 4vw, 22px);
   background: #111520;
   color: #fff;
   padding: 0 16px;
@@ -44,22 +44,18 @@ body {
 .buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(6px, 2vw, 10px);
+  gap: 8px;
 }
 
 button {
-  height: clamp(52px, 14vw, 68px);
+  height: min(62px, 13vw);
   border: none;
   border-radius: 12px;
-  font-size: clamp(16px, 4.5vw, 22px);
+  font-size: clamp(14px, 4vw, 20px);
   font-weight: 700;
   cursor: pointer;
   transition: transform 0.08s ease, filter 0.08s ease;
-
-  /* Yeh dono late click fix karte hain */
   touch-action: manipulation;
-  -webkit-touch-callout: none;
-  user-select: none;
 }
 
 button:active {
@@ -90,13 +86,12 @@ button:active {
 .btn-equal {
   grid-column: span 4;
   background: #2ba45d;
-  color: #f6f6f6;
-  font-size: clamp(20px, 5vw, 26px);
+  color: #f3eeee;
+  font-size: clamp(18px, 4vw, 24px);
   border-radius: 14px;
   box-shadow: 0 4px 0 #234b34;
   width: 100%;
-  margin-top: 10px;
-  touch-action: manipulation; /* Equal button ke liye bhi */
+  margin-top: 8px;
 }
 
 .btn-equal:hover {
@@ -109,7 +104,120 @@ button:active {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
   padding: 10px;
-  color: rgba(225, 223, 233, 0.9);
+  color: rgba(178, 178, 182, 0.413);* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1f2e;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  position: relative;
+  bottom: 12px;
+}
+
+.container {
+  background: #252c3d;
+  border-radius: 24px;
+  padding: 20px;
+  width: min(320px, 95vw);
+  box-shadow: 0 20px 60px rgba(23, 34, 67, 0.5);
+}
+
+.display-container {
+  margin-bottom: 12px;
+}
+
+.display {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  text-align: right;
+  font-size: clamp(16px, 4vw, 22px);
+  background: #111520;
+  color: #fff;
+  padding: 0 16px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+button {
+  height: min(62px, 13vw);
+  border: none;
+  border-radius: 12px;
+  font-size: clamp(14px, 4vw, 20px);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.08s ease, filter 0.08s ease;
+  touch-action: manipulation;
+}
+
+button:active {
+  transform: scale(0.92);
+  filter: brightness(0.8);
+}
+
+.btn-number {
+  background: #313a52;
+  color: #1c43c4;
+  box-shadow: 0 4px 0 #1c2235;
+}
+
+.btn-number:hover {
+  background: #3a4461;
+}
+
+.btn-operator {
+  background: #f8a920db;
+  color: #e3dddd;
+  box-shadow: 0 4px 0 #b87200;
+}
+
+.btn-operator:hover {
+  background: #f0ae3c;
+}
+
+.btn-equal {
+  grid-column: span 4;
+  background: #2ba45d;
+  color: #f3eeee;
+  font-size: clamp(18px, 4vw, 24px);
+  border-radius: 14px;
+  box-shadow: 0 4px 0 #234b34;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.btn-equal:hover {
+  background: #04f464;
+}
+
+.footer {
+  background: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  padding: 10px;
+  color: rgba(178, 178, 182, 0.413);
+  font-weight: bold;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
   font-weight: bold;
   font-size: 14px;
   position: fixed;
