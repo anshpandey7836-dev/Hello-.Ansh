@@ -652,3 +652,224 @@ nav a:hover::after {
 .loading-indicator.show {
     display: inline-block;
 }
+  .section-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #ff6b00;
+      margin-bottom: 12px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards 0.2s;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 60px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards 0.4s;
+    }
+
+    .section-title span { color: #ff6b00; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Marquee Track ── */
+    .marquee-wrapper {
+      width: 100%;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+
+    .marquee-track:hover { animation-play-state: paused; }
+
+    .marquee-track-reverse {
+      animation: marquee-reverse 32s linear infinite;
+      margin-top: 20px;
+    }
+
+    .marquee-track-reverse:hover { animation-play-state: paused; }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    @keyframes marquee-reverse {
+      from { transform: translateX(-50%); }
+      to   { transform: translateX(0); }
+    }
+
+    /* ── Card ── */
+    .t-card {
+      background: #141414;
+      border: 1px solid #1f1f1f;
+      border-radius: 20px;
+      padding: 26px 24px;
+      width: 300px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+
+    .t-card:hover {
+      border-color: #ff6b0066;
+      box-shadow: 0 0 30px #ff6b0020;
+      transform: translateY(-6px) scale(1.02);
+    }
+
+    /* animated glow blob */
+    .t-card::after {
+      content: '';
+      position: absolute;
+      width: 100px; height: 100px;
+      background: radial-gradient(circle, #ff6b0030, transparent 70%);
+      border-radius: 50%;
+      top: -30px; right: -30px;
+      animation: blobFloat 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes blobFloat {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50%       { transform: translate(-10px, 10px) scale(1.2); }
+    }
+
+    .quote-icon {
+      font-family: 'Syne', sans-serif;
+      font-size: 56px;
+      color: #ff6b00;
+      opacity: 0.2;
+      line-height: 1;
+      margin-bottom: 8px;
+      font-weight: 800;
+    }
+
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 12px;
+    }
+
+    .stars span {
+      color: #ff6b00;
+      font-size: 13px;
+      animation: starPop 0.3s ease backwards;
+    }
+
+    .stars span:nth-child(1) { animation-delay: 0.1s; }
+    .stars span:nth-child(2) { animation-delay: 0.2s; }
+    .stars span:nth-child(3) { animation-delay: 0.3s; }
+    .stars span:nth-child(4) { animation-delay: 0.4s; }
+    .stars span:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes starPop {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .t-text {
+      font-size: 13.5px;
+      line-height: 1.75;
+      color: #aaa;
+      margin-bottom: 22px;
+    }
+
+    .t-divider {
+      height: 1px;
+      background: linear-gradient(to right, #ff6b0040, transparent);
+      margin-bottom: 18px;
+    }
+
+    .t-client {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .t-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 15px;
+      color: #fff;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    /* Pulse ring on avatar */
+    .t-avatar::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 1.5px solid currentColor;
+      opacity: 0.3;
+      animation: ringPulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes ringPulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50%       { transform: scale(1.15); opacity: 0; }
+    }
+
+    .av-orange { background: linear-gradient(135deg,#ff6b00,#ff9a3c); color: #ff6b00; }
+    .av-blue   { background: linear-gradient(135deg,#0066ff,#00aaff); color: #0088ff; }
+    .av-green  { background: linear-gradient(135deg,#00c853,#69f0ae); color: #00c853; }
+    .av-purple { background: linear-gradient(135deg,#7c3aed,#c084fc); color: #9f5cff; }
+    .av-pink   { background: linear-gradient(135deg,#ec4899,#f9a8d4); color: #ec4899; }
+    .av-teal   { background: linear-gradient(135deg,#0d9488,#5eead4); color: #0d9488; }
+    .av-red    { background: linear-gradient(135deg,#dc2626,#fca5a5); color: #dc2626; }
+    .av-yellow { background: linear-gradient(135deg,#d97706,#fcd34d); color: #d97706; }
+
+    /* override avatar text color */
+    .t-avatar span { color: #fff !important; }
+
+    .t-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .t-role {
+      font-size: 11px;
+      color: #444;
+      letter-spacing: 0.04em;
+    }
+
+    .t-badge {
+      margin-left: auto;
+      background: #ff6b0015;
+      border: 1px solid #ff6b0030;
+      color: #ff6b00;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
